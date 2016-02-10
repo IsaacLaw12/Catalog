@@ -1,0 +1,37 @@
+
+<html>
+<head>
+<link rel=stylesheet type=text/css href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+{% for message in messages %}
+<li><strong>{{message}}</strong></li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{% include "header.html" %}
+<div id="menuHead"><h1>Restaurants Page</h1></div>
+{% for i in restaurants %}
+<div class="restaurant">
+<p style="font-size:30px;"><a href="/restaurant/{{i.id}}/menu/">{{i.name}}</a></p>
+<div style="text-align:right;width:70px;float:right;">
+{% if 'user_id' in login_session and i.user_id ==login_session['user_id']%}
+<a href="/restaurant/{{i.id}}/edit/" >Edit</a>
+
+</br>
+<a href = "/restaurant/{{i.id}}/delete/" >Delete</a>
+{% endif %}
+</div>
+</br>
+</div>
+{% endfor %}
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+
+<div id="headerLeft">
+<div style="width:28%;height:50%;background-color:#222222;float:left;text-align:center;padding:4px;"><!-- User functions-->
+	
+	{%if 'picture' in session %}
+	<img src="{{session['picture']}}" height="60px" style="border-radius:30px;">
+	{% endif%}
+	{%if 'username' not in session %}
+	<a style="color:white;font-size:15px;" href="{{url_for('showLogin')}}">Log in </a>
+	{%else%}
+	<a style="color:white;font-size:15px;" href="{{url_for('disconnect')}}">Log out </a>
+	{% endif%}
+	
+</div>
+<div style="width:64%;height:93%;float:right;background-color:#985f31;padding:5px;"><!--Links-->
+	<a class="link" href="{{url_for('showRestaurants')}}">All Restaurants</a>
+	{% if restaurants %}
+	</br>
+	<a class="link" href="{{url_for('newRestaurant',)}}">Add Restaurant</a><!--Show the Add Restaurant link when on the showRestaurants page-->
+	{% endif%}
+	{% if restaurant_id %}
+	</br>
+	<a class="link" href="{{url_for('showMenu', restaurant_id=restaurant_id)}}">View Menu</a><!--Show the View Menu link when on restaurant specific pages-->
+	{% endif%}
+	{% if creator %}
+	</br>
+	<a class="link" href="{{url_for('newMenuItem', restaurant_id=restaurant_id)}}">Add Menu Item</a><!--Show the Add Menu Item link when on the showMenu page-->
+	{% endif%}
+</div>
+ 
+</div>
+
+
+
+
+

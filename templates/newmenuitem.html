@@ -1,0 +1,39 @@
+{% include('header.html')%}
+<html>
+<head>
+<link rel=stylesheet type=text/css href="{{url_for('static',filename='styles.css')}}">
+<script src="{{url_for('static',filename='menu.js')}}"></script>
+</head>
+<body>
+<div id="menuHead"><h1> New Menu Item </h1></div>
+<div class="menuPage" style="width:96%;">
+
+<form action="{{url_for('newMenuItem', restaurant_id=restaurant_id )}}" id='newItem' method = 'POST'>
+
+<p>Name:</p>
+
+<input type='text' size='30' name='name'>
+
+<p>Description:</p>
+
+<input type='text' size='144' height="3" name='description'>
+
+<p>Price:</p>
+
+<input type='text' size='5' name='price'>
+
+<p>Course:</p>
+<select name="course">
+<option value="Appetizer">Appetizer</option>
+<option value="Soupsalad">Soup and Salad</option>
+<option value="Entree">Entree</option>
+<option value="Dessert">Dessert</option>
+<option value="Drink">Drink</option>
+</select>
+</br></br>
+<input type='submit' onclick="return validateForm('newItem')" value='Create'><a href = "{{ url_for('showMenu', restaurant_id = restaurant_id)}}"> Cancel </a>
+
+</form>
+</div>
+</body>
+</html>

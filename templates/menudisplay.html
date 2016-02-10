@@ -1,0 +1,118 @@
+{% include('header.html')%}
+<html>
+<head>
+<link rel=stylesheet type=text/css href="{{url_for('static',filename='styles.css')}}">
+<script src="{{url_for('static',filename='menu.js')}}"></script>
+</head>
+<body onload="checkEmpties()">
+
+
+<div class="flash">{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+{% for message in messages %}
+<strong>{{message}}</strong>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}</div>
+
+
+<div id='menuHead'>
+    
+    <p style="text-align:right;font-size:12px;">by {{creator.name}}</p>
+    {{restaurant.name}}</br></br>
+</div></br>
+</br>
+<div id="emptyAlert"></div>
+
+<div class="menuPage" id='appetizers'><h5>Appetizers:</h5>
+
+{% for i in items %}
+
+{% if i.course=='Appetizer'%}
+<div class="menuItem">
+
+<p>{{i.name}}</p>
+
+<p>{{i.description}}</p>
+
+<p> {{i.price}} </p>
+
+
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+<div class="menuPage" id='soupsalad'><h5>Soups & Salads:</h5>
+{% for i in items %}
+
+{% if i.course=='Soupsalad'%}
+<div class="menuItem">
+
+<p>{{i.name}}</p>
+
+<p>{{i.description}}</p>
+
+<p> {{i.price}} </p>
+
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+<div class="menuPage" id='entrees'><h5>Entrees:</h5>
+{% for i in items %}
+
+{% if i.course=='Entree'%}
+<div class="menuItem">
+
+<p>{{i.name}}</p>
+
+<p>{{i.description}}</p>
+
+<p> {{i.price}} </p>
+
+
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+<div class="menuPage" id='dessert'><h5>Dessert:</h5>
+{% for i in items %}
+
+{% if i.course=='Dessert'%}
+<div class="menuItem">
+
+<p>{{i.name}}</p>
+
+<p>{{i.description}}</p>
+
+<p> {{i.price}} </p>
+
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+<div class="menuPage" id='drinks'><h5>Drinks:</h5>
+{% for i in items %}
+
+{% if i.course=='Drink'%}
+<div class="menuItem">
+
+<p>{{i.name}}</p>
+
+<p>{{i.description}}</p>
+
+<p> {{i.price}} </p>
+
+</div>
+{% endif %}
+{% endfor %}
+</div>
+</body>
+
+</html>
